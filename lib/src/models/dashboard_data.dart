@@ -25,7 +25,7 @@ class DashboardData {
     final site = json['site'] as Map<String, dynamic>? ?? const {};
     return DashboardData(
       greeting: json['greeting'] as String? ?? 'Welcome back',
-      siteName: site['site_name'] as String? ?? 'Nabiul Edufy',
+      siteName: site['site_name'] as String? ?? 'EDUSOL',
       noticeCount: json['notice_count'] as int? ?? 0,
       latestNotices: (json['latest_notices'] as List<dynamic>? ?? const [])
           .map((item) => NoticeItem.fromJson(item as Map<String, dynamic>))

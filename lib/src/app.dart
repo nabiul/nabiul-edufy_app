@@ -72,7 +72,7 @@ class _EdufyAppState extends State<EdufyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Nabiul Edufy',
+      title: 'EDUSOL',
       theme: AppTheme.light,
       home: _loading
           ? const _SplashScreen()

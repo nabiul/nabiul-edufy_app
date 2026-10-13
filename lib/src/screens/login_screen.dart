@@ -102,33 +102,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: [
                       Container(
-                        width: 62,
-                        height: 62,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 18,
+                          vertical: 12,
+                        ),
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [colors.primary, const Color(0xFF748BFF)],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
+                          color: colors.surface,
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
-                              color: colors.primary.withValues(alpha: .25),
+                              color: colors.primary.withValues(alpha: .14),
                               blurRadius: 24,
                               offset: const Offset(0, 10),
                             ),
                           ],
                         ),
-                        child: const Icon(
-                          Icons.auto_stories_rounded,
-                          color: Colors.white,
-                          size: 32,
+                        child: Image.asset(
+                          'assets/branding/edusol-logo.png',
+                          width: 250,
+                          fit: BoxFit.contain,
                         ),
-                      ),
-                      const SizedBox(height: 18),
-                      Text(
-                        'Nabiul Edufy',
-                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 28),
                       Container(
@@ -151,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Text(
-                                'Welcome to Edufy',
+                                'Welcome to EDUSOL',
                                 style: Theme.of(
                                   context,
                                 ).textTheme.headlineMedium,

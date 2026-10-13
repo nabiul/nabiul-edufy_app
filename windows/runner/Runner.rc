@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.nabiul.edufy" "\0"
-            VALUE "FileDescription", "nabiul_edufy_app" "\0"
+            VALUE "FileDescription", "EDUSOL" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "nabiul_edufy_app" "\0"
+            VALUE "InternalName", "EDUSOL" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.nabiul.edufy. All rights reserved." "\0"
-            VALUE "OriginalFilename", "nabiul_edufy_app.exe" "\0"
-            VALUE "ProductName", "nabiul_edufy_app" "\0"
+            VALUE "OriginalFilename", "EDUSOL.exe" "\0"
+            VALUE "ProductName", "EDUSOL" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
