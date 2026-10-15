@@ -67,6 +67,9 @@ class AppUser {
       canEditClass ||
       canCreateSection ||
       canEditSection;
+  bool get canViewEnquiry => abilities['view_enquiry'] ?? false;
+  bool get canCreateEnquiry => abilities['create_enquiry'] ?? false;
+  bool get canEditEnquiry => abilities['edit_enquiry'] ?? false;
 
   factory AppUser.fromJson(Map<String, dynamic> json) => AppUser(
     id: json['id'] as int,

@@ -9,6 +9,7 @@ import '../models/app_user.dart';
 import '../models/attendance.dart';
 import '../models/dashboard_data.dart';
 import '../models/fees.dart';
+import '../models/enquiry.dart';
 import '../models/notice.dart';
 
 class ApiClient {
@@ -60,6 +61,31 @@ class ApiClient {
         .map((item) => NoticeItem.fromJson(item as Map<String, dynamic>))
         .toList();
   }
+
+  Future<List<Enquiry>> enquiries(String token, {String? search, String? status, bool due = false}) async {
+    final body = await _get('/enquiries', token, query: {'per_page': '50', if (search?.isNotEmpty == true) 'search': search!, if (status?.isNotEmpty == true) 'status': status!, if (due) 'due': '1'});
+    return (body['data'] as List<dynamic>).map((item) => Enquiry.fromJson(item as Map<String, dynamic>)).toList();
+  }
+
+  Future<EnquiryOptions> enquiryOptions(String token) async {
+    final body = await _get('/enquiries/options', token);
+    return EnquiryOptions.fromJson(body['data'] as Map<String, dynamic>);
+  }
+
+  Future<Enquiry> enquiry(String token, int id) async {
+    final body = await _get('/enquiries/$id', token);
+    return Enquiry.fromJson(body['data'] as Map<String, dynamic>);
+  }
+
+  Future<void> saveEnquiry(String token, Map<String, dynamic> data, {int? id}) async {
+    if (id == null) {
+      await _post('/enquiries', token, data);
+    } else {
+      await _put('/enquiries/$id', token, data);
+    }
+  }
+
+  Future<void> saveEnquiryFollowUp(String token, int id, Map<String, dynamic> data) async => _post('/enquiries/$id/follow-up', token, data);
 
   Future<AcademicSummary> academicSummary(String token) async {
     final body = await _get('/academic/summary', token);

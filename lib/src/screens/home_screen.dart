@@ -6,6 +6,7 @@ import '../services/api_client.dart';
 import 'academic_screen.dart';
 import 'accounts_screen.dart';
 import 'fees_screen.dart';
+import 'enquiries_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final titles = ['Dashboard', 'Academic', 'Fees', 'Accounts', 'Profile'];
+    final titles = ['Dashboard', 'Academic', 'Enquiries', 'Fees', 'Accounts', 'Profile'];
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 72,
@@ -117,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.only(left: 2, right: 16),
               child: InkWell(
                 borderRadius: BorderRadius.circular(14),
-                onTap: () => setState(() => _tabIndex = 4),
+                onTap: () => setState(() => _tabIndex = 5),
                 child: CircleAvatar(
                   radius: 19,
                   backgroundColor: Theme.of(
@@ -163,6 +164,11 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.school_outlined),
               selectedIcon: Icon(Icons.school_rounded),
               label: 'Academic',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.phone_in_talk_outlined),
+              selectedIcon: Icon(Icons.phone_in_talk_rounded),
+              label: 'Enquiries',
             ),
             NavigationDestination(
               icon: Icon(Icons.receipt_long_outlined),
@@ -213,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
         canTransferStudent: _user!.canTransferStudent,
         canCollectFees: _user!.canCollectFees,
       ),
-      2 => FeesScreen(
+      3 => FeesScreen(
         apiClient: widget.apiClient,
         token: widget.token,
         canCollectFees: _user!.canCollectFees,
@@ -224,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
         canEditTemplate: _user!.canEditFeeTemplate,
         canDeleteTemplate: _user!.canDeleteFeeTemplate,
       ),
-      3 => AccountsScreen(
+      4 => AccountsScreen(
         apiClient: widget.apiClient,
         token: widget.token,
         canCreateDeposit: _user!.canCreateDeposit,
@@ -237,6 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
         canEditPurpose: _user!.canEditAccountPurpose,
         canDeletePurpose: _user!.canDeleteAccountPurpose,
       ),
+      2 => EnquiriesScreen(apiClient: widget.apiClient, token: widget.token, canCreate: _user!.canCreateEnquiry, canEdit: _user!.canEditEnquiry),
       _ => _ProfileTab(user: _user!, onLogout: _logout),
     };
   }
@@ -367,7 +374,7 @@ class _DashboardTab extends StatelessWidget {
                   icon: Icons.receipt_long_rounded,
                   color: const Color(0xFF0B9B8E),
                   background: const Color(0xFFE8F8F5),
-                  onTap: () => onNavigate(2),
+                  onTap: () => onNavigate(3),
                 ),
               ),
               const SizedBox(width: 10),
@@ -378,7 +385,7 @@ class _DashboardTab extends StatelessWidget {
                   icon: Icons.account_balance_rounded,
                   color: const Color(0xFFD27B13),
                   background: const Color(0xFFFFF4DD),
-                  onTap: () => onNavigate(3),
+                  onTap: () => onNavigate(4),
                 ),
               ),
             ],
@@ -409,7 +416,7 @@ class _DashboardTab extends StatelessWidget {
                   icon: Icons.account_balance_rounded,
                   color: const Color(0xFFD27B13),
                   background: const Color(0xFFFFF4DD),
-                  onTap: () => onNavigate(3),
+                  onTap: () => onNavigate(4),
                 ),
               ),
             ],
@@ -421,7 +428,7 @@ class _DashboardTab extends StatelessWidget {
             icon: Icons.payments_rounded,
             color: const Color(0xFF0B9B8E),
             background: const Color(0xFFE8F8F5),
-            onTap: () => onNavigate(2),
+            onTap: () => onNavigate(3),
           ),
           const SizedBox(height: 24),
           _ClassStudentChart(data: dashboard.studentsByClass),
